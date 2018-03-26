@@ -1,0 +1,79 @@
+# mix of CFM-ID sourceforge help and other resources 
+#using gcc 6.3
+mkdir cfm-id
+cd cfm-id
+export MAINDIR=$PWD
+mkdir opt
+cd opt
+
+#install Boost
+wget http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz
+tar -zxvf boost_1_55_0.tar.gz
+cd boost_1_55_0
+./bootstrap.sh --prefix=. --with-libraries=regex,serialization,filesystem,system
+./b2 address-model=64 cflags=-fPIC cxxflags=-fPIC install
+cd ..
+rm boost_1_55_0.tar.gz
+export BOOST_ROOT=$MAINDIR/opt/boost_1_55_0 #/include
+
+#install RDkit
+cd $MAINDIR/opt
+wget -O rdkit.tar.gz https://sourceforge.net/projects/rdkit/files/rdkit/Q3_2013/RDKit_2013_09_1.tgz/download
+tar -xvzf rdkit.tar.gz
+rm rdkit.tar.gz
+cd RDKit_2013_09_1/External/INCHI-API
+wget -O INCHI-1-API.zip http://www.inchi-trust.org/download/104/INCHI-1-API.zip
+unzip INCHI-1-API.zip
+rm INCHI-1-API.zip
+mkdir src
+cp ./INCHI-1-API/INCHI_API/inchi_dll/* src/
+cd $MAINDIR/opt/RDKit_2013_09_1/
+mkdir build
+cd build
+cmake .. -DRDK_BUILD_PYTHON_WRAPPERS=OFF -DRDK_BUILD_INCHI_SUPPORT=ON -DBOOST_ROOT=$BOOST_ROOT >> ../log_build.txt
+make install >> ../install_log.txt
+export RDBASE=$MAINDIR/opt/RDKit_2013_09_1
+
+
+# Installs an LP Solver (could not compile, download precompiled)
+cd $MAINDIR/opt
+mkdir lpsolve55
+cd lpsolve55
+mkdir bin
+cd bin
+mkdir ux64
+cd ux64
+wget -O lp_solve.tar.gz https://sourceforge.net/projects/lpsolve/files/lpsolve/5.5.2.0/lp_solve_5.5.2.0_dev_ux64.tar.gz/download 
+tar -xvzf lp_solve.tar.gz
+rm lp_solve.tar.gz
+export LPSOLVEDIR=$MAINDIR/opt/lpsolve55/bin/ux64
+# Library bin/ux64/liblpsolve55.{a,so} created
+
+# download cfmid and compile
+cd $MAINDIR
+svn checkout svn://svn.code.sf.net/p/cfm-id/code/cfm cfm
+cd cfm
+mkdir build
+cd build
+cmake .. -DLPSOLVE_INCLUDE_DIR=$LPSOLVEDIR -DLPSOLVE_LIBRARY_DIR=$LPSOLVEDIR -DBoost_INCLUDE_DIR=$BOOST_ROOT >> ../log_build.txt
+make install >> ../install_log.txt
+
+#export LD_LIBRARY_PATH=$BOOST_ROOT/lib:$RDBASE/lib:$LPSOLVEDIR
+export LD_LIBRARY_PATH=/home/jcapelladesto/cfmtest/cfm-id/opt/boost_1_55_0:/home/jcapelladesto/cfmtest/cfm-id/opt/RDKit_2013_09_1/lib:/home/jcapelladesto/cfmtest/cfm-id/opt/lpsolve55/bin/ux64
+
+# download libraries # HOW?
+cd $MAINDIR
+mkdir cfmlib
+cd cfmlib
+svn checkout https://svn.code.sf.net/p/cfm-id/code/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/ metab_se_cfm 
+cd metab_se_cfm
+unzip params_metab_se_cfm.zip
+rm params_metab_se_cfm.zip
+cd ..
+svn checkout https://svn.code.sf.net/p/cfm-id/code/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/ negative_metab_se_cfm
+cd negative_metab_se_cfm
+unzip negative_se_params.zip
+rm negative_se_params.zip
+
+
+
