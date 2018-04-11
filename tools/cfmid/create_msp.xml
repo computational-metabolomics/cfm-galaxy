@@ -1,8 +1,5 @@
 <tool id="create_msp" name="Create MSP Files from msPurity" version="0.1.0">
     <description> </description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
         <requirement type="package" version="1.4.4">r-optparse</requirement>
         <requirement type="package" version="1.4.0">bioconductor-mspurity</requirement>			
