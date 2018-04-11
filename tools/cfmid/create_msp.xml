@@ -65,7 +65,12 @@ Result object from msPurity purityA-frag4feature functions.
 Set the value only if you selected "Weighted Average" above, the PPM value is used to define the limits for m/z grouping into a single fragment. 
 The weighting is based on the precursor intensity, meaning that the more intense the precursor signal was, the more intensity will its fragments contribute to the averaged spectra.
 
-@github_developers_contributors@ 
+
+Developers and contributors
+---------------------------
+
+- **Jordi Capellades (j.capellades.to@gmail.com) - Universitat Rovira i Virgili (SP)**
+- **Ralf Weber (r.j.weber@bham.ac.uk) - University of Birmingham (UK)**
 
 	</help>
         <citations>
