@@ -1,6 +1,6 @@
 CFM for Galaxy
 =================
-|Build Status (Travis)| |Bioconda|
+|Build Status (last commit)| |Build Status (weekly global test)| |Bioconda|
 
 Galaxy tools for applying Competitive Fragmentation Modeling (CFM) to spectrum prediction and metabolite identification tasks, as well as a tools for fragment generation and peak annotation.
 
@@ -28,11 +28,12 @@ License
 -------
 Released under the GNU General Public License v3.0 (see LICENSE file)
 
+.. |Build Status (last commit)| image:: https://github.com/computational-metabolomics/cfm-galaxy/workflows/Galaxy%20Tool%20Linting%20and%20Tests%20for%20push%20and%20PR/badge.svg
+   : target: https://github.com/computational-metabolomics/cfm-galaxy/actions?query=workflow%3A%22Galaxy+Tool+Linting+and+Tests+for+push+and+PR%22
 
-.. |Build Status (Travis)| image:: https://img.shields.io/travis/computational-metabolomics/cfm-galaxy.svg?style=flat&maxAge=3600&label=Travis-CI
-   :target: https://travis-ci.org/computational-metabolomics/cfm-galaxy
+.. |Build Status (weekly global test)| image:: https://github.com/computational-metabolomics/cfm-galaxy/workflows/Weekly%20global%20Tool%20Linting%20and%20Tests/badge.svg
+   : target: https://github.com/computational-metabolomics/cfm-galaxy/actions?query=workflow%3A%22Weekly+global+Tool+Linting+and+Tests%22
 
 .. |Bioconda| image:: https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat&maxAge=3600
    :target: http://bioconda.github.io/recipes/cfm/README.html
-
 
