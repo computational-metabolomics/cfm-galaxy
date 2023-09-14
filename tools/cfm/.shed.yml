@@ -1,6 +1,6 @@
 categories:
 - Metabolomics
-description: XPath XML querying tool
+description: Competitive Fragmentation Modeling (CFM)
 homepage_url: https://sourceforge.net/p/cfm-id/
 long_description: |
   Competitive Fragmentation Modeling (CFM) to spectrum prediction and metabolite identification tasks, as well as a tools for fragment generation and peak annotation.
