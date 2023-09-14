@@ -1,4 +1,4 @@
-<tool id="cfmid" name="CFM-ID" version="0.1.0">
+<tool id="cfmid" name="CFM-ID" version="33">
     <description></description>
     <requirements>
         <requirement type="package" version="33">cfm</requirement>
