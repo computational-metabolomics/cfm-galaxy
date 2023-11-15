@@ -1,0 +1,10 @@
+categories:
+- Metabolomics
+description: Competitive Fragmentation Modeling (CFM)
+homepage_url: https://sourceforge.net/p/cfm-id/
+long_description: |
+  Competitive Fragmentation Modeling (CFM) to spectrum prediction and metabolite identification tasks, as well as a tools for fragment generation and peak annotation.
+name: cfmid
+owner: computational-metabolomics
+remote_repository_url: https://github.com/computational-metabolomics/cfm-galaxy/tree/master/tools/cfm
+type: unrestricted
